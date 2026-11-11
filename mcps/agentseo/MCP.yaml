@@ -1,0 +1,34 @@
+id: agentseo
+name: AgentSEO
+description: Search intelligence for SEO workflows: keyword research, Google SERP analysis, rank tracking, backlink research, content gaps, local visibility, and AI search visibility through a remote MCP server.
+author: AgentSEO-dev
+url: https://github.com/AgentSEO-dev/agentseo-clients
+category: search
+prerequisites:
+  - AgentSEO account and server-side API key
+content:
+  - name: Remote
+    content: |
+      {
+        "type": "streamable-http",
+        "url": "https://www.agentseo.dev/mcp",
+        "headers": {
+          "x-api-key": "{{AGENTSEO_API_KEY}}"
+        }
+      }
+  - name: NPX
+    prerequisites:
+      - Node.js
+    content: |
+      {
+        "command": "npx",
+        "args": ["-y", "@agentseo/mcp-server"],
+        "env": {
+          "AGENTSEO_API_KEY": "{{AGENTSEO_API_KEY}}",
+          "AGENTSEO_API_URL": "https://www.agentseo.dev/api/v1"
+        }
+      }
+parameters:
+  - name: AgentSEO API key
+    key: AGENTSEO_API_KEY
+    placeholder: your_api_key_here
